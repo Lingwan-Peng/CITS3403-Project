@@ -19,4 +19,8 @@ Login details saved (json)
 
 CSS general format
 
+## Refrences
+CSS:
+
+Bootstrap: https://getbootstrap.com/docs/5.0/components/dropdowns/
 
