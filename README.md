@@ -8,7 +8,7 @@ Get user's geolocation https://www.freecodecamp.org/news/how-to-get-user-locatio
 https://leafletjs.com/
 
 ## General Ideas
-Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect)
+Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect). Find best price along a trip route. Find best price for a given fuel economy
 
 ## Task List
 Login page
