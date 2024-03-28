@@ -6,7 +6,4 @@ Embedding google map in HTML https://blog.hubspot.com/website/how-to-embed-googl
 Get user's geolocation https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/
 
 ## General Ideas
-rely on users to update prices/prev-prices/location
-map of locations
-list of user's past interactions (updates)
-user profile (fuel type, name, ect)
+Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect)
