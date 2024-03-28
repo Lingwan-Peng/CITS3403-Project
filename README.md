@@ -9,3 +9,10 @@ https://leafletjs.com/
 
 ## General Ideas
 Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect)
+
+## Task List
+Login page
+Login details saved (json)
+CSS general format
+
+
