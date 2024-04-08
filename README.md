@@ -10,7 +10,7 @@ Get user's geolocation <https://www.freecodecamp.org/news/how-to-get-user-locati
 fuel watch <https://www.fuelwatch.wa.gov.au>
 
 ## General Ideas
-Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect). Find best price along a trip route. Find best price for a given fuel economy
+Rely on users to update prices/prev-prices/location. Map of locations. List of user's past interactions (updates). User profile (fuel type, name, ect). Find best price along a trip route. Find best price for a given fuel economy. Display a leaderboard showing the amount of contributions made to the website.
 
 ## Task List
 Login page, map display, leaderboard, user profile ...
