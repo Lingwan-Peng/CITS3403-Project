@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>User Info Page</title>
+    <!-- style and script :) -->
+</head>
+
+<body>
+    <!-- change links or content later for back-end part -->
+    <img id="userProfilePic" src="profilePic.PNG" alt="User profile picture." width="250" height="200"
+        style="float: inline-end; margin-right: 5%; z-index: -1;">
+
+    <h1>User Info Page!</h1>
+    <div id="profile">
+        <!-- users are able to modify these info -->
+        <p>Name: <span id="Name">user name</span></p>
+        <p>Email: <span id="Email">email address</span></p>
+        <p>Phone: <span id="Phone">phone number</span></p>
+        <p>DOB: <span id="DOB">date of birth</span></p>
+        <p>Bio: <span id="Bio">user biography...</span></p>
+        <button id="update" onclick="toggleEditMode()">Edit Profile</button>
+    </div>
+
+    <div id="editProfile" style="display: none;">
+        <label for="newName">Name:</label>
+        <input type="text" id="newName"><br>
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail"><br>
+        <label for="newPhone">Phone:</label>
+        <input type="tel" id="newPhone"><br>
+        <label for="newDOB">DOB:</label>
+        <input type="date" id="newDOB"><br>
+        <label for="newBio">Bio:</label>
+        <textarea id="newBio"></textarea><br>
+        <button onclick="saveProfile()">Save Changes</button>
+    </div>
+
+    <div id="systInfo">
+        <!-- info that should be updated by system -->
+        <p>Number of Posts: <span id="NumPosts">total number of posts: xx</span></p>
+        <p>Recent posts: <span id="RecentPosts">~10 most recent posts or modification</span></p>
+        <p>Favorites: <span id="Favs">favorite stations?</span></p>
+    </div>
+</body>
+
+<script>
+    function toggleEditMode() {
+        var profileDiv = document.getElementById("profile");
+        var editProfileDiv = document.getElementById("editProfile");
+
+        // Toggle visibility of profile and editProfile divs
+        profileDiv.style.display = "none";
+        editProfileDiv.style.display = "block";
+
+        // Populate input fields with current profile data
+        document.getElementById("newName").value = document.getElementById("Name").textContent;
+        document.getElementById("newEmail").value = document.getElementById("Email").textContent;
+        document.getElementById("newPhone").value = document.getElementById("Phone").textContent;
+        document.getElementById("newDOB").valueAsDate = new Date(document.getElementById("DOB").textContent);
+        document.getElementById("newBio").value  = document.getElementById("Bio").textContent;
+    }
+
+    function saveProfile() {
+        var newName = document.getElementById("newName").value;
+        var newEmail = document.getElementById("newEmail").value;
+        var newPhone = document.getElementById("newPhone").value;
+        var newDOB  = document.getElementById("newDOB").value;
+        var newBio   = document.getElementById("newBio").value;
+
+        // Update profile data
+        document.getElementById("Name").textContent = newName;
+        document.getElementById("Email").textContent = newEmail;
+        document.getElementById("Phone").textContent = newPhone;
+        document.getElementById("DOB").textContent = newDOB;
+        document.getElementById("Bio").textContent = newBio;
+
+        // Hide editProfile div and show profile div
+        document.getElementById("profile").style.display = "block";
+        document.getElementById("editProfile").style.display = "none";
+    }
+
+</script>
+
+</html>
