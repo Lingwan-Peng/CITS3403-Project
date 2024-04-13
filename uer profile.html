@@ -47,8 +47,8 @@
 
 <script>
     function toggleEditMode() {
-        var profileDiv = document.getElementById("profile");
-        var editProfileDiv = document.getElementById("editProfile");
+        let profileDiv = document.getElementById("profile");
+        let editProfileDiv = document.getElementById("editProfile");
 
         // Toggle visibility of profile and editProfile divs
         profileDiv.style.display = "none";
@@ -63,11 +63,11 @@
     }
 
     function saveProfile() {
-        var newName = document.getElementById("newName").value;
-        var newEmail = document.getElementById("newEmail").value;
-        var newPhone = document.getElementById("newPhone").value;
-        var newDOB  = document.getElementById("newDOB").value;
-        var newBio   = document.getElementById("newBio").value;
+        let newName = document.getElementById("newName").value;
+        let newEmail = document.getElementById("newEmail").value;
+        let newPhone = document.getElementById("newPhone").value;
+        let newDOB  = document.getElementById("newDOB").value;
+        let newBio   = document.getElementById("newBio").value;
 
         // Update profile data
         document.getElementById("Name").textContent = newName;
