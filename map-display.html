@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(255, 255, 255);
+        }
         #page-heading{
             display: flex;
             margin-bottom: 10px;
@@ -14,9 +24,17 @@
         }
         #map-placeholder{
             width: 100%;
+            height: 700px;
+            object-fit: cover;
         }
         #map{
             position: relative;
+        }
+        .container {
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.478);
         }
         #petrol-list{
             position: absolute;
@@ -24,8 +42,6 @@
             right: 20px;
             bottom: 20px;
             width: 250px;
-            background-color: white;
-            border-radius: 30px;
             overflow: auto;
         }
         .listing{
@@ -43,6 +59,7 @@
             justify-content: center;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <section id = "page-heading">
@@ -50,8 +67,8 @@
     </section>
     <section>
         <div id = "map">
-            <img id = "map-placeholder" src = "Screenshot from 2024-04-10 17-29-31.png">
-            <div id = "petrol-list">
+            <img id = "map-placeholder" class="col-md-12" src = "Screenshot from 2024-04-10 17-29-31.png">
+            <div id = "petrol-list" class = "container">
                 <h3>LISTINGS</h3>
                 <div class = "listing">
                     <p>
@@ -109,13 +126,39 @@
                         <span>Petrol Station Name</span>
                     </p>
                 </div>
+                <div class = "listing">
+                    <p>
+                        <img class = "station-logo" src = "Screenshot from 2024-04-10 17-29-31.png">
+                        <span>Perth 6000</span><br>
+                        <span>Petrol Station Name</span>
+                    </p>
+                </div>
+                <div class = "listing">
+                    <p>
+                        <img class = "station-logo" src = "Screenshot from 2024-04-10 17-29-31.png">
+                        <span>Perth 6000</span><br>
+                        <span>Petrol Station Name</span>
+                    </p>
+                </div>
+                <div class = "listing">
+                    <p>
+                        <img class = "station-logo" src = "Screenshot from 2024-04-10 17-29-31.png">
+                        <span>Perth 6000</span><br>
+                        <span>Petrol Station Name</span>
+                    </p>
+                </div>
+                <div class = "listing">
+                    <p>
+                        <img class = "station-logo" src = "Screenshot from 2024-04-10 17-29-31.png">
+                        <span>Perth 6000</span><br>
+                        <span>Petrol Station Name</span>
+                    </p>
+                </div>
                 <div id = "submission-button">   
-                    <label>
-                        Add another
+                    <label style = "font-size: 13px;">
+                        Found a station?
                     </label>
-                    <button>
-                        Submit here!
-                    </button>
+                    <button>Add Here</button>
                 </div>
             </div>
         </div>
