@@ -14,9 +14,16 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.478);
+    text-align: center; /* To center-align the logo */
 }
 
-h2 {
+.container .logo {
+    width: 100px; /* Set the width of your logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.container h2 {
     text-align: center;
 }
 
