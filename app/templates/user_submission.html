@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>User Login</title>
+<link rel="stylesheet" href="{{url_for('static', filename='mapdisplay.css')}}">
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
+  }
+
+  .container {
+      background-color: rgb(255, 255, 255);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.478);
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2>Petrol Listing</h2>
+  <form id = "main_form" method="post">
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" name="station_name" class="form-control" placeholder="Station Name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="number" name="Postcode" class="form-control" placeholder="Postcode" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="number" name="price" class="form-control" placeholder="Price per liter" required>
+      </div>
+      <div class="col-md-6">
+        <input type="text" name="username" class="form-control" placeholder="Username" required>
+      </div>
+    </div>
+    <hr class="solid">
+    <div class="row">
+      <div class = "col-md-6">
+        <label id = "label_fuel">Fuel Types</label>
+        <form action="/action_page.php">
+          <input type="checkbox" id="standard_unleaded" name="standard_unleaded" value="Bike">
+          <label for="standard_unleaded"> Standard unleaded petrol (91)</label><br>
+          <input type="checkbox" id="premium_95_octane" name="premium_95_octane" value="Car">
+          <label for="premium_95_octane"> Premium 95-octane unleaded</label><br>
+          <input type="checkbox" id="premium_98_octane" name="premium_98_octane" value="Boat">
+          <label for="premium_98_octane"> Premium 98-octane unleaded</label><br>
+          <input type="checkbox" id="e10" name="e10" value="Boat">
+          <label for="e10"> E10, also marketed as 94-octane</label><br>
+          <input type="checkbox" id="e85" name="e85" value="Boat">
+          <label for="e85"> E85 - flex-fuel</label><br>
+          <input type="checkbox" id="diesel" name="diesel" value="Boat">
+          <label for="diesel"> Diesel</label><br><br>
+        </form>          
+      </div>
+      <div class = "col-md-6">
+        <label for="wait_time">Waiting Time:</label>
+        <select id="wait_time" name="wait_time">
+          <option value="no_wait">No wait</option>
+          <option value="little_busy">A little busy</option>
+          <option value="busy">Busy</option>
+          <option value="very_busy">Very busy</option>
+          <option value="capacity">At capacity</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+      <div class="col-md-6">
+          <a href="{{url_for('home_func')}}">
+              <input type="button" id = "back_button" class="btn btn-primary" value="Back">
+          </a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
