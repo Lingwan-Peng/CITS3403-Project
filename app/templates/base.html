@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='navbar.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     {% block head %}{% endblock %}
 </head>
-<body>
+{% if not is_submission_page%}
+<body style="margin-top: 150px;">
+    <nav class="navbar">
+        <img src="{{url_for('static', filename='images/Untitled.jpg')}}" alt="Logo"> <!-- Add an image tag inside the navbar -->
+        <ul>
+            <li><a href="{{url_for('home_func')}}">Home</a></li>
+            <li><a href="{{url_for('leaderboard_func')}}">Leaderboard</a></li>
+            <li><a href="{{url_for('profile_func')}}">Your Profile</a></li>
+            <li><a href="{{url_for('login_func')}}">Login</a></li>
+        </ul>
+    </nav>
+{% endif %}
     {% block body %}{% endblock %}
 </body>
 </html>

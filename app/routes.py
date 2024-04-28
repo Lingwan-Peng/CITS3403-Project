@@ -8,11 +8,11 @@ def home_func():
 
 @flaskApp.route('/login')
 def login_func():
-    return render_template('userLogin.html')
+    return render_template('userLogin.html', is_submission_page=True)
 
 @flaskApp.route('/submission')
 def submission_func():
-    return render_template('user_submission.html')
+    return render_template('user_submission.html', is_submission_page=True)
 
 @flaskApp.route('/leaderboard')
 def leaderboard_func():
