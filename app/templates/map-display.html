@@ -16,89 +16,12 @@
         <img id = "map-placeholder" class="col-md-12" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
         <div id = "petrol-list" class = "container">
             <h3>LISTINGS</h3>
+            <label style = "font-size: 13px;">
+                Found a station?
+            </label>
+            <input type = "text" id = "map_options_submission">
             <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
-            </div>
-            <div class = "listing">
-                <p>
-                    <img class = "station-logo" src = "{{url_for('static', filename='images/Screenshot from 2024-04-10 17-29-31.png')}}">
-                    <span>Perth 6000</span><br>
-                    <span>Petrol Station Name</span>
-                </p>
+                
             </div>
             <div id = "submission-button">   
                 <label style = "font-size: 13px;">
@@ -111,6 +34,10 @@
         </div>
     </div>
 </section>
+
+<div id = "test"></div>
+
+<script src = "{{url_for('static', filename='map-display.js')}}"></script>
 
 {% endblock %}
 

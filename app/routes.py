@@ -1,5 +1,7 @@
+from os import path
+import csv
 from app import flaskApp
-from flask import render_template, redirect, request, flash
+from flask import render_template, redirect, request, flash, jsonify
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
@@ -22,6 +24,24 @@ def leaderboard_func():
 @flaskApp.route('/profile')
 def profile_func():
     return render_template('userProfile.html')
+
+@flaskApp.route('/trial', methods = ["POST"])
+def trial_func():
+    input_data = request.form
+    street = input_data.get('place')
+    print(street)
+    file_path = path.join(flaskApp.root_path, 'static', 'trial.csv')
+    with open(file_path, newline='') as csvfile:
+        reader = list(csv.reader(csvfile))
+        reader = reader[1:]
+        returned_rows = []
+        # Iterate over each row in the CSV file
+        for row in reader:
+            if street in row[0]:
+                returned_rows.append(row)
+            elif street in row[1]:
+                returned_rows.append(row)
+    return jsonify({"text": returned_rows})
 
 
 '''
