@@ -14,7 +14,7 @@ class User(db.Model):
 class Station(db.Model):
     station_id = db.Column(db.Integer, primary_key=True)
     station_name = db.Column(db.String(120), nullable=False)
-    station_postcode = db.Column(db.Integer(4))
+    station_postcode = db.Column(db.Integer)
     station_address = db.Column(db.String(255))
 
 class Post(db.Model):
