@@ -11,6 +11,8 @@ class User(db.Model):
     user_password = db.Column(db.String(20), nullable=False)
     user_email = db.Column(db.String(120), nullable=False, unique=True)
 
+    posts = db.relationship('Posts', back_populates='user')
+
 class Station(db.Model):
     station_id = db.Column(db.Integer, primary_key=True)
     station_name = db.Column(db.String(120), nullable=False)
@@ -23,4 +25,4 @@ class Post(db.Model):
     post_title = db.Column(db.String(255), nullable=False)
     post_content = db.Column(db.Text, nullable=False)
     post_author_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-    post_author = relationship('User', backref='posts')
+    post_author = relationship('User', back_populates ='posts')

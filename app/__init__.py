@@ -6,9 +6,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy 
 from flask_migrate import Migrate
 
-app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+flaskApp.config.from_object(Config)
+db = SQLAlchemy(flaskApp)
+migrate = Migrate(flaskApp, db)
 
 from app import routes, models # don't move this line
