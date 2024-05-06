@@ -1,6 +1,7 @@
 from os import path
 import csv
-from app import flaskApp
+from app import flaskApp, models
+from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 
 @flaskApp.route('/')
@@ -30,18 +31,17 @@ def trial_func():
     input_data = request.form
     street = input_data.get('place')
     print(street)
-    file_path = path.join(flaskApp.root_path, 'static', 'trial.csv')
-    with open(file_path, newline='') as csvfile:
-        reader = list(csv.reader(csvfile))
-        reader = reader[1:]
-        returned_rows = []
-        # Iterate over each row in the CSV file
-        for row in reader:
-            if street in row[0]:
-                returned_rows.append(row)
-            elif street in row[1]:
-                returned_rows.append(row)
-    return jsonify({"text": returned_rows})
+    all_stations = Station.query.all()
+    returned_row = []
+    count = 0
+    for s in all_stations:
+        name = str(s.station_name.lower())
+        if street.lower() in name:
+            inner_row = [s.station_name, s.station_address, s.station_phone_number, s.station_postcode]
+            returned_row.append(inner_row)
+            count += 1
+    print(returned_row)
+    return jsonify({"text": returned_row})
 
 
 '''
