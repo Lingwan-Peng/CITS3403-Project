@@ -1,6 +1,6 @@
 from os import path
 import csv
-from app import flaskApp, models
+from app import flaskApp, models, db
 from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 
@@ -42,6 +42,20 @@ def trial_func():
             count += 1
     print(returned_row)
     return jsonify({"text": returned_row})
+
+@flaskApp.route('/map-submit', methods = ["POST"])
+def map_input_func():
+    data = request.form
+    name = data.get('station_name')
+    address = data.get('address')
+    postcode = data.get('postcode')
+    phone = data.get('phone_num')
+    new_station = Station(station_name = name, station_postcode = postcode, station_phone_number = phone, station_address = address)
+    db.session.add(new_station)
+    print(new_station)
+    db.session.commit()
+    print("Received data:", data)
+    return jsonify({"message": "Data received successfully"})
 
 
 '''

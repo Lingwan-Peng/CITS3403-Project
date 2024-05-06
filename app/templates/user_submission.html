@@ -31,18 +31,18 @@
   <form id = "main_form" method="post">
     <div class="row">
       <div class="col-md-6">
-        <input type="text" name="station_name" class="form-control" placeholder="Station Name" required>
+        <input type="text" id="station_name" class="form-control" placeholder="Station Name" required>
       </div>
       <div class="col-md-6">
-        <input type="number" name="Postcode" class="form-control" placeholder="Postcode" required>
+        <input type="number" id="phone" class="form-control" placeholder="Phone Number" required>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <input type="number" name="price" class="form-control" placeholder="Price per liter" required>
+        <input type="text" id="address" class="form-control" placeholder="Address" required>
       </div>
       <div class="col-md-6">
-        <input type="text" name="username" class="form-control" placeholder="Username" required>
+        <input type="number" id="Postcode" class="form-control" placeholder="Postcode" required>
       </div>
     </div>
     <hr class="solid">
@@ -50,17 +50,17 @@
       <div class = "col-md-6">
         <label id = "label_fuel">Fuel Types</label>
         <form action="/action_page.php">
-          <input type="checkbox" id="standard_unleaded" name="standard_unleaded" value="Bike">
+          <input type="checkbox" id="standard_unleaded" id="standard_unleaded" value="standard_unleaded">
           <label for="standard_unleaded"> Standard unleaded petrol (91)</label><br>
-          <input type="checkbox" id="premium_95_octane" name="premium_95_octane" value="Car">
+          <input type="checkbox" id="premium_95_octane" id="premium_95_octane" value="premium_95_octane">
           <label for="premium_95_octane"> Premium 95-octane unleaded</label><br>
-          <input type="checkbox" id="premium_98_octane" name="premium_98_octane" value="Boat">
+          <input type="checkbox" id="premium_98_octane" id="premium_98_octane" value="premium_98_octane">
           <label for="premium_98_octane"> Premium 98-octane unleaded</label><br>
-          <input type="checkbox" id="e10" name="e10" value="Boat">
-          <label for="e10"> E10, also marketed as 94-octane</label><br>
-          <input type="checkbox" id="e85" name="e85" value="Boat">
+          <input type="checkbox" id="e10" id="e10" value="e10">
+          <label for="e10"> E10 - 94-octane</label><br>
+          <input type="checkbox" id="e85" id="e85" value="e85">
           <label for="e85"> E85 - flex-fuel</label><br>
-          <input type="checkbox" id="diesel" name="diesel" value="Boat">
+          <input type="checkbox" id="diesel" id="diesel" value="diesel">
           <label for="diesel"> Diesel</label><br><br>
         </form>          
       </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-          <input type="submit" class="btn btn-primary" value="Submit">
+          <input id = "submission" type="submit" class="btn btn-primary" value="Submit">
       </div>
       <div class="col-md-6">
           <a href="{{url_for('home_func')}}">
@@ -87,6 +87,8 @@
     </div>
   </form>
 </div>
+
+<script src = "{{url_for('static', filename='mapSubmit.js')}}"></script>
 
 
 {% endblock %}
