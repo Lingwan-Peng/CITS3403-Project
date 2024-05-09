@@ -1,68 +1,33 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
 <title>Leaderboard</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='leaderboard.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='leaderboard.css')}}">
+
 {% endblock %}
 
 {% block body %}
 <div class="wrapper">
     <h1 style="text-align: center; margin-bottom: 20px;">Leaderboard</h1>
     <div class="lboard_section">
-        <div class="lboard_tabs tabs">
-            <ul>
-                <li class="active" data-li="rank">Rank</li>
-                <li data-li="user">User</li>
-            </ul>
+        <div class="lboard_tabs">
+            <div class="tabs">
+                <ul>
+                    <li data-li="today">Rank</li>
+                    <li class="active" data-li="month">User</li>
+                </ul>
+            </div>
         </div>
 
         <div class="lboard_wrap">
-            <div class="lboard_item rank" style="display: block;">
-                <!-- Placeholder for rank leaderboard data -->
+            <div class="lboard_item today" style="display: none;">
             </div>
-            <div class="lboard_item user" style="display: none;">
-                <!-- Placeholder for user leaderboard data -->
+            <div class="lboard_item month" style="display: block;">
             </div>
         </div>
     </div>
-</div>
-
-<!-- Include jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Function to fetch leaderboard data
-        function fetchLeaderboardData(type) {
-            $.ajax({
-                url: '/leaderboard',  
-                type: 'GET',
-                data: { type: type },  
-                success: function(data) {
-                    $('.lboard_item.' + type).html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching leaderboard data:', error);
-                }
-            });
-        }
-
-        // Initial load: Fetch data for the "Rank" tab
-        fetchLeaderboardData('rank');
-
-        // Handle click events on tab items
-        $('.tabs ul li').on('click', function() {
-            var type = $(this).data('li');
-            if (!$(this).hasClass('active')) {
-                $('.tabs ul li').removeClass('active');
-                $(this).addClass('active');
-                $('.lboard_item').hide();
-                $('.lboard_item.' + type).show();
-                fetchLeaderboardData(type);
-            }
-        });
-    });
-</script>
+</div>    
 {% endblock %}
 
 
