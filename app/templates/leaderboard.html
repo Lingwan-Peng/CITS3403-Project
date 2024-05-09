@@ -12,18 +12,18 @@
         <div class="lboard_tabs">
             <div class="tabs">
                 <ul>
-                    <li class="active" data-li="month">User</li>
-                    <li data-li="today">Rank</li>
+                    <li class="active" data-li="rank">Rank</li>
+                    <li data-li="user">User</li>
                 </ul>
             </div>
         </div>
 
         <div class="lboard_wrap">
-            <div class="lboard_item month" style="display: block;">
-                <!-- Placeholder for month's leaderboard data -->
+            <div class="lboard_item rank" style="display: block;">
+                <!-- Placeholder for rank leaderboard data -->
             </div>
-            <div class="lboard_item today" style="display: none;">
-                <!-- Placeholder for today's leaderboard data -->
+            <div class="lboard_item user" style="display: none;">
+                <!-- Placeholder for user leaderboard data -->
             </div>
         </div>
     </div>
@@ -49,8 +49,8 @@
             });
         }
 
-        // Initial load: Fetch data for the "User" tab
-        fetchLeaderboardData('month');
+        // Initial load: Fetch data for the "Rank" tab
+        fetchLeaderboardData('rank');
 
         // Handle click events on tab items
         $('.tabs ul li').on('click', function() {
@@ -64,6 +64,7 @@
     });
 </script>
 {% endblock %}
+
 
 
 
