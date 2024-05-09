@@ -2,7 +2,7 @@
 
 {% block head %}
 <title>Leaderboard</title>
-<link rel="stylesheet" href="{{url_for('static', filename='leaderboard.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='leaderboard.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -57,11 +57,17 @@
             var type = $(this).data('li');
             $('.lboard_item').hide();
             $('.lboard_item.' + type).show();
-            fetchLeaderboardData(type);
+            if (type === 'rank' || type === 'user') { // Check if type is valid
+                fetchLeaderboardData(type);
+            } else {
+                console.error('Invalid type:', type);
+            }
         });
     });
 </script>
+
 {% endblock %}
+
 
 
 
