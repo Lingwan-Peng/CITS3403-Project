@@ -52,7 +52,11 @@
             $('.tabs ul li').removeClass('active');
             $(this).addClass('active');
             var type = $(this).data('li');
-            fetchAndDisplayLeaderboardData(type);
+            if (type === 'rank' || type === 'user') { // Check if type is valid
+                fetchAndDisplayLeaderboardData(type);
+            } else {
+                console.error('Invalid type:', type);
+            }
         });
     });
 </script>
