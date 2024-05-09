@@ -52,12 +52,14 @@
 
         // Handle click events on tab items
         $('.tabs ul li').on('click', function() {
-            $('.tabs ul li').removeClass('active');
-            $(this).addClass('active');
             var type = $(this).data('li');
-            $('.lboard_item').hide();
-            $('.lboard_item.' + type).show();
-            fetchLeaderboardData(type);
+            if (!$(this).hasClass('active')) {
+                $('.tabs ul li').removeClass('active');
+                $(this).addClass('active');
+                $('.lboard_item').hide();
+                $('.lboard_item.' + type).show();
+                fetchLeaderboardData(type);
+            }
         });
     });
 </script>
