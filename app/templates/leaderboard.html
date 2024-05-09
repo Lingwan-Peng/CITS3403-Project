@@ -19,9 +19,15 @@
         <div class="lboard_wrap">
             <div class="lboard_item rank" style="display: block;">
                 <!-- Placeholder for rank leaderboard data -->
+                {% for rank, user in rank_data %}
+                    <div><a href="{{ url_for('user_profile', username=user) }}">{{ rank }}</a></div>
+                {% endfor %}
             </div>
             <div class="lboard_item user" style="display: none;">
                 <!-- Placeholder for user leaderboard data -->
+                {% for rank, user in user_data %}
+                    <div><a href="{{ url_for('user_profile', username=user) }}">{{ user }}</a></div>
+                {% endfor %}
             </div>
         </div>
     </div>
