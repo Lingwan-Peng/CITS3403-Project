@@ -2,7 +2,7 @@
 
 {% block head %}
 <title>Leaderboard</title>
-<link rel="stylesheet" href="{{url_for('static', filename='leaderboard.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='leaderboard.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -12,28 +12,34 @@
         <div class="lboard_tabs">
             <div class="tabs">
                 <ul>
-                    <li data-li="today">Rank</li>
                     <li class="active" data-li="month">User</li>
+                    <li data-li="today">Rank</li>
                 </ul>
             </div>
         </div>
 
         <div class="lboard_wrap">
-            <div class="lboard_item today" style="display: none;"></div>
-            <div class="lboard_item month" style="display: block;"></div>
+            <div class="lboard_item month" style="display: block;">
+                <!-- Placeholder for month's leaderboard data -->
+            </div>
+            <div class="lboard_item today" style="display: none;">
+                <!-- Placeholder for today's leaderboard data -->
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Include jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     $(document).ready(function() {
+        // Function to fetch leaderboard data
         function fetchLeaderboardData(type) {
             $.ajax({
-                url: '/leaderboard',
+                url: '/leaderboard',  
                 type: 'GET',
-                data: { type: type },
+                data: { type: type },  
                 success: function(data) {
                     $('.lboard_item.' + type).html(data);
                 },
@@ -43,8 +49,10 @@
             });
         }
 
+        // Initial load: Fetch data for the "User" tab
         fetchLeaderboardData('month');
 
+        // Handle click events on tab items
         $('.tabs ul li').on('click', function() {
             $('.tabs ul li').removeClass('active');
             $(this).addClass('active');
@@ -56,4 +64,5 @@
     });
 </script>
 {% endblock %}
+
 
