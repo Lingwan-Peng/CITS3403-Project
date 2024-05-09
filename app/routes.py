@@ -1,16 +1,8 @@
-from flask import render_template, redirect, request, flash, jsonify
+from os import path
+import csv
 from app import flaskApp, models, db
 from .models import User, Station, Post
-
-# Create a Blueprint for leaderboard-related routes
-leaderboard_bp = Blueprint('leaderboard', __name__)
-
-@leaderboard_bp.route('/leaderboard')
-def leaderboard():
-    return render_template('leaderboard.html')
-
-# Register the leaderboard Blueprint with the Flask app
-flaskApp.register_blueprint(leaderboard_bp)
+from flask import render_template, redirect, request, flash, jsonify
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
@@ -25,11 +17,16 @@ def login_func():
 def submission_func():
     return render_template('user_submission.html', is_submission_page=True)
 
+@flaskApp.route('/leaderboard')
+def leaderboard_func():
+    return render_template('leaderboard.html')
+
+
 @flaskApp.route('/profile')
 def profile_func():
     return render_template('userProfile.html')
 
-@flaskApp.route('/trial', methods=["POST"])
+@flaskApp.route('/trial', methods = ["POST"])
 def trial_func():
     input_data = request.form
     street = input_data.get('place')
@@ -46,19 +43,20 @@ def trial_func():
     print(returned_row)
     return jsonify({"text": returned_row})
 
-@flaskApp.route('/map-submit', methods=["POST"])
+@flaskApp.route('/map-submit', methods = ["POST"])
 def map_input_func():
     data = request.form
     name = data.get('station_name')
     address = data.get('address')
     postcode = data.get('postcode')
     phone = data.get('phone_num')
-    new_station = Station(station_name=name, station_postcode=postcode, station_phone_number=phone, station_address=address)
+    new_station = Station(station_name = name, station_postcode = postcode, station_phone_number = phone, station_address = address)
     db.session.add(new_station)
     print(new_station)
     db.session.commit()
     print("Received data:", data)
     return jsonify({"message": "Data received successfully"})
+
 
 '''
 : WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
