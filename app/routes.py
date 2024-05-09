@@ -19,8 +19,13 @@ def submission_func():
 
 @flaskApp.route('/leaderboard')
 def leaderboard_func():
-    return render_template('leaderboard.html')
-
+    type = request.args.get('type')
+    if type == 'rank':
+        return jsonify(rank_data)
+    elif type == 'user':
+        return jsonify(user_data)
+    else:
+        return jsonify({'error': 'Invalid type'})
 
 @flaskApp.route('/profile')
 def profile_func():
@@ -64,3 +69,4 @@ def map_input_func():
 def submit():
     return render_template('listGroup.html')
 '''
+
