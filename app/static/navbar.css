@@ -11,6 +11,7 @@ h1 {
     height: 100px;
     display: flex;
     align-items: center; /* Align items vertically in the navbar */
+    z-index: 1000;
 }
 .navbar ul {
     display: flex;
