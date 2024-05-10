@@ -36,9 +36,6 @@ body {
     width: 250px;
     overflow: auto;
 }
-.listing{
-    border: black solid 1px;
-}
 .station-logo{
     width: 50px;
     object-fit: cover;
@@ -99,4 +96,44 @@ font-size: 13px;
 #back_button{
     background-color: grey;
     border: grey;
+}
+.listing{
+    position: relative;
+    border: black solid 1px;
+}
+.additional-listing-info {
+    width: 100%;
+    padding-left: 10px;
+    position: absolute;
+    margin-top: 5px;
+    top: 100%;
+    left: 0;
+    background-color: #d9d9d9;
+    opacity: 0; 
+    transition: opacity 0.3s;
+    z-index: 999;
+    pointer-events: none; /* Add this line */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+}
+.listing:hover .additional-listing-info {
+    opacity: 1;
+}
+.inner_class{
+    font-size: 11px;
+}
+#fuel_information{
+    display: flex;
+}
+.inner-column{
+    flex: 1; 
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+}
+.inner-p{
+    margin-bottom: 5px;
 }
