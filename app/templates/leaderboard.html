@@ -8,6 +8,15 @@
 {% block body %}
 <div class="wrapper">
     <h1 style="text-align: center; margin-bottom: 20px;">Leaderboard</h1>
+    <!-- Navigation Links -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('user_profile') }}">User Profile</a></li>
+            <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
+        </ul>
+    </nav>
+
     <div class="lboard_section">
         <div class="lboard_tabs tabs">
             <ul>
@@ -62,6 +71,7 @@
 </script>
 
 {% endblock %}
+
 
 
 
