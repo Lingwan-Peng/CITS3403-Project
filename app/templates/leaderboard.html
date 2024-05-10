@@ -23,7 +23,6 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block script %}
@@ -51,8 +50,8 @@
         fetchAndDisplayLeaderboardData('rank');
 
         // Handle click events on tab items
-        $('.tabs ul li').on('click', function() {
-            $('.tabs ul li').removeClass('active');
+        $('.lboard_tabs ul li').on('click', function() {
+            $('.lboard_tabs ul li').removeClass('active');
             $(this).addClass('active');
             var type = $(this).data('li');
             if (type === 'rank' || type === 'user') { // Check if type is valid
@@ -64,6 +63,7 @@
     });
 </script>
 {% endblock %}
+
 
 
 
