@@ -51,3 +51,9 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+#link_back{
+    margin-top: 15px; 
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
