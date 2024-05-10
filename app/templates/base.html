@@ -8,7 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     {% block head %}{% endblock %}
 </head>
-{% if not is_submission_page%}
 <body style="margin-top: 150px;">
     <nav class="navbar">
         <img src="{{url_for('static', filename='images/Untitled.jpg')}}" alt="Logo"> <!-- Add an image tag inside the navbar -->
@@ -19,7 +18,7 @@
             <li><a href="{{url_for('login_func')}}">Login</a></li>
         </ul>
     </nav>
-{% endif %}
+
     {% block body %}
     <!-- Navigation Links -->
     <nav>
@@ -32,5 +31,6 @@
     {% endblock %}
 </body>
 </html>
+
 
 
