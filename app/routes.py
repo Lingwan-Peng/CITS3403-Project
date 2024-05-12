@@ -3,6 +3,7 @@ import csv
 from app import flaskApp, models, db
 from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
+import sqlalchemy as sa
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
@@ -22,9 +23,35 @@ def leaderboard_func():
     return render_template('leaderboard.html')
 
 
-@flaskApp.route('/profile')
+@flaskApp.route('/userProfile', methods = ['GET', "POST"])
+# @login_required
 def profile_func():
-    return render_template('userProfile.html')
+    if request.method == 'POST':
+        # Logic to handle the POST request and update the user profile
+        data = request.form
+        print(data)
+        oldName = data.get('oldName')
+        name = data.get('newName')
+        email = data.get('newEmail')
+        phone = data.get('newPhone')
+        dob = data.get('newDOB')
+        bio = data.get('newBio')
+
+        # update db
+        user = User.query.filter_by(user_name=oldName).first()
+        if user:
+            user.user_name = name
+            user.user_email = email
+            user.user_phone = phone
+            user.user_dob = dob
+            user.user_bio = bio
+
+            # Commit changes to the database
+            db.session.commit()
+            print('user profile updated')
+        return jsonify({'message': 'Profile updated successfully'}), 200
+    else:
+        return render_template('userProfile.html')
 
 @flaskApp.route('/trial', methods = ["POST"])
 def trial_func():
