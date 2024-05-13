@@ -1,9 +1,10 @@
 from typing import Optional
+from flask import app
 import sqlalchemy as sa
 from sqlalchemy import ForeignKey
 import sqlalchemy.orm as so
 from sqlalchemy.orm import relationship
-from app import db
+from app import db, flaskApp
 
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -23,8 +24,12 @@ class Station(db.Model):
 
 class Post(db.Model):
     post_id = db.Column(db.Integer, primary_key=True)
-    superior_post_id = db.Column(db.String(120), nullable=False)
+    superior_post_id = db.Column(db.String(120))
     post_title = db.Column(db.String(255), nullable=False)
     post_content = db.Column(db.Text, nullable=False)
     post_author_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     post_author = relationship('User', back_populates ='posts')
+
+# creates the database tables -> only needs to be run once
+with flaskApp.app_context():
+    db.create_all()
