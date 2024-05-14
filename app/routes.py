@@ -21,6 +21,41 @@ def submission_func():
 @flaskApp.route('/leaderboard')
 def leaderboard_func():
     return render_template('leaderboard.html')
+    @flaskApp.route('/leaderboard')
+def leaderboard_func():
+    return render_template('leaderboard.html')
+
+# Route to fetch leaderboard data sorted by rank
+@flaskApp.route('/leaderboard/rank', methods=['GET'])
+def get_leaderboard_by_rank():
+    # Example: Assuming you have a function to fetch leaderboard data by rank
+    leaderboard_data = fetch_leaderboard_by_rank()
+    return jsonify(leaderboard_data)
+
+# Route to fetch leaderboard data sorted by user
+@flaskApp.route('/leaderboard/user', methods=['GET'])
+def get_leaderboard_by_user():
+    # Logic to retrieve leaderboard data sorted by user
+    # Example: Assuming you have a function to fetch leaderboard data by user
+    leaderboard_data = fetch_leaderboard_by_user()
+    return jsonify(leaderboard_data)
+
+# Function to fetch leaderboard data sorted by rank
+def fetch_leaderboard_by_rank():
+    # Placeholder logic to fetch leaderboard data by rank from the database
+
+    leaderboard_data = {}  # Placeholder for actual data
+    # Perform database query and populate leaderboard_data
+    return leaderboard_data
+
+# Function to fetch leaderboard data sorted by user
+def fetch_leaderboard_by_user():
+    # Placeholder logic to fetch leaderboard data by user from the database
+
+    leaderboard_data = {}  # Placeholder for actual data
+    # Perform database query and populate leaderboard_data
+    return leaderboard_data
+
 
 
 @flaskApp.route('/userProfile', methods = ['GET', "POST"])
