@@ -30,13 +30,6 @@ class Post(db.Model):
     post_author_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     post_author = relationship('User', back_populates ='posts')
 
-class User(db.Model):
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    phone_number = db.Column(db.String(20), nullable=True)
-    date_of_birth = db.Column(db.Date, nullable=True)
 
 
 # creates the database tables -> only needs to be run once
