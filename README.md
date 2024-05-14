@@ -29,16 +29,17 @@ As the input from users are submitted, it will be sent to the back end server to
 
 ## How to launch application
 
-To launch this application, make sure you have the following conditions satisfied:
+To launch this application, make sure you have the required packages installed in your environment. You can check the requirements in the file `requirements.txt` and install any missing packages with command:
 
-- A reliable internet connection.
-- ...
+`pip install -r requirements.txt`
 
-If on a computer, use the command line `flask run` and follow the link provided in the flask description such as `http://127.0.0.1:5000`.
+The current packages can be automatically organised into `requirements.txt` after running:
 
-If on a mobile device: to be implemented.
+`pip freeze >> requirements.txt`
 
-## How to run application
+When you have all the packages install and ready to run, use the command line `flask run` and follow the link provided in the flask description such as `http://127.0.0.1:5000`.
+
+## How to run application tests
 
 Unit tests to be implemented.
 
