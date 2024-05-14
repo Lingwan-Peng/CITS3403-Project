@@ -84,6 +84,12 @@ def map_input_func():
     print("Received data:", data)
     return jsonify({"message": "Data received successfully"})
 
+# New route to fetch user's rank
+@flaskApp.route('/leaderboard/user', methods=['GET'])
+def get_user_rank():
+    # Placeholder logic to fetch user's rank from the database
+    user_rank = {'rank': 5}  # Placeholder for actual user rank
+    return jsonify(user_rank)
 
 '''
 : WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
@@ -92,12 +98,6 @@ def submit():
     return render_template('listGroup.html')
 '''
 
-'''
-: WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
-@flaskApp.route('/submit', methods=["POST"])
-def submit():
-    return render_template('listGroup.html')
-'''
 
 
 
