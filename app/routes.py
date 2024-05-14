@@ -23,7 +23,7 @@ def leaderboard_func():
     return render_template('leaderboard.html')
 
 
-@flaskApp.route('/userProfile', methods = ['GET', "POST"])
+@flaskApp.route('/userProfile', methods = ['GET', 'POST'])
 # @login_required
 def profile_func():
     if request.method == 'POST':
@@ -91,12 +91,42 @@ def get_user_rank():
     user_rank = {'rank': 5}  # Placeholder for actual user rank
     return jsonify(user_rank)
 
+
+# New login route
+@flaskApp.route('/login', methods=['GET', 'POST'])
+def login_func():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        user = User.query.filter_by(username=username, password=password).first()
+        if user:
+            # Redirect to the user profile page with the user's ID
+            return redirect(url_for('profile_func', user_id=user.user_id))
+        else:
+            flash('Invalid username or password', 'error')
+            return redirect(url_for('login_func'))
+
+    return render_template('userLogin.html', is_submission_page=True)
+
+
+# New user profile route
+@flaskApp.route('/userProfile/<int:user_id>', methods=['GET'])
+def profile_func(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return render_template('userProfile.html', user=user)
+    else:
+        flash('User not found', 'error')
+        return redirect(url_for('login_func'))
+
 '''
 : WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
 @flaskApp.route('/submit', methods=["POST"])
 def submit():
     return render_template('listGroup.html')
 '''
+
 
 
 
