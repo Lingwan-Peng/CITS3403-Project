@@ -11,7 +11,7 @@
     <div class="lboard_section">
         <div class="lboard_tabs tabs">
             <ul>
-                <li class="active" data-li="rank"><a href="#">User's Rank</a></li> <!-- Updated button text -->
+                <li class="active" data-li="user"><a href="#">User's Rank</a></li> <!-- Updated button text -->
             </ul>
         </div>
 
@@ -33,11 +33,10 @@
         // Function to fetch and display leaderboard data
         function fetchAndDisplayLeaderboardData(type) {
             $.ajax({
-                url: '/leaderboard',  
+                url: '/leaderboard/user',  // Updated URL to fetch user's rank
                 type: 'GET',
-                data: { type: type },  
                 success: function(data) {
-                    $('.lboard_item').html(data);
+                    $('.lboard_item').html('<p>User\'s Rank: ' + data.rank + '</p>');
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching leaderboard data:', error);
@@ -45,15 +44,15 @@
             });
         }
 
-        // Initial load: Fetch data for the "Rank" tab
-        fetchAndDisplayLeaderboardData('rank');
+        // Initial load: Fetch data for the "User's Rank" tab
+        fetchAndDisplayLeaderboardData('user');
 
         // Handle click events on tab items
         $('.lboard_tabs ul li').on('click', function() {
             $('.lboard_tabs ul li').removeClass('active');
             $(this).addClass('active');
             var type = $(this).data('li');
-            if (type === 'rank' || type === 'user') { // Check if type is valid
+            if (type === 'user') {
                 fetchAndDisplayLeaderboardData(type);
             } else {
                 console.error('Invalid type:', type);
@@ -62,6 +61,7 @@
     });
 </script>
 {% endblock %}
+
 
 
 
