@@ -1,16 +1,11 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
 <title>User Info Page</title>
 <link rel="stylesheet" href="{{url_for('static', filename='userProfile.css')}}">
-
-
 {% endblock %}
 
 {% block body %}
-
-<!-- change links or content later for back-end part -->
 <div class="container-fluid pt-4 px-4">
     <div class="row justify-content-md-center">
         <div class="col-sm-12 col-xl-6">
@@ -52,11 +47,14 @@
                     <p>Recent posts: <span id="RecentPosts">~10 most recent posts or modification</span></p>
                     <p>Favorites: <span id="Favs">favorite stations?</span></p>
                 </div>
+
+                <!-- Display user's information -->
+                <h1>Welcome, {{ user.username }}!</h1>
+                <p>Email: {{ user.email }}</p>
+                <!-- Add other user information fields as needed -->
             </div>
         </div>
     </div>
 </div>
-</body>
-
-<script src="{{url_for('static', filename = 'userProfile.js')}}"></script>
+<script src="{{url_for('static', filename='userProfile.js')}}"></script>
 {% endblock %}
