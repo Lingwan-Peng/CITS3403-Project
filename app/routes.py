@@ -9,8 +9,24 @@ from flask import render_template, redirect, request, flash, jsonify
 def home_func():
     return render_template('map-display.html')
 
-@flaskApp.route('/login')
+@flaskApp.route('/login', methods=['GET', 'POST'])
 def login_func():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        # Add your authentication logic here
+        if username == 'admin' and password == 'password':  # Example check
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return jsonify(success=True, redirect_url=url_for('home_func'))
+            else:
+                return redirect(url_for('home_func'))
+        else:
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return jsonify(success=False, message='Invalid username or password.')
+            else:
+                flash('Invalid username or password.')
+                return redirect(url_for('login_func'))
     return render_template('userLogin.html', is_submission_page=True)
 
 @flaskApp.route('/submission')
