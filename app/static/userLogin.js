@@ -1,27 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+  loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
-    const formData = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", form.action, true);
-    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+      const response = await fetch('/check_login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+      });
 
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        const response = JSON.parse(xhr.responseText);
-        if (response.success) {
-          window.location.href = response.redirect_url;
-        } else {
-          alert(response.message);
-        }
+      const result = await response.json();
+
+      if (result.success) {
+          window.location.href = '/profile';
       } else {
-        alert("An error occurred. Please try again.");
+          alert('Invalid username or password');
       }
-    };
-
-    xhr.send(formData);
   });
 });

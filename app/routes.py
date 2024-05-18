@@ -3,31 +3,46 @@ import csv
 from app import flaskApp, models, db
 from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(flaskApp)
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
 def home_func():
     return render_template('map-display.html')
 
-@flaskApp.route('/login', methods=['GET', 'POST'])
+@flaskApp.route('/login')
 def login_func():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-
-        # Add your authentication logic here
-        if username == 'admin' and password == 'password':  # Example check
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return jsonify(success=True, redirect_url=url_for('home_func'))
-            else:
-                return redirect(url_for('home_func'))
-        else:
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return jsonify(success=False, message='Invalid username or password.')
-            else:
-                flash('Invalid username or password.')
-                return redirect(url_for('login_func'))
     return render_template('userLogin.html', is_submission_page=True)
+
+@flaskApp.route('/check_login', methods=['POST'])
+def check_login():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+
+    user = User.query.filter_by(user_name=username).first()
+    print(user)
+    if user and bcrypt.check_password_hash(user.user_password_hash, password):
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False}), 401
+    
+@flaskApp.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+    email = data['email']
+    phone = data['phone']
+
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    new_user = User(user_name=username, user_password_hash=hashed_password, user_email=email, user_phone=phone)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({'message': 'User registered successfully'})
 
 @flaskApp.route('/submission')
 def submission_func():
