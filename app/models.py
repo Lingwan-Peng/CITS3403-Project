@@ -10,8 +10,8 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(120), nullable=False)
     user_password_hash = db.Column(db.String(256), nullable=False)
-    user_email = db.Column(db.String(120), nullable=False, unique=True)
-    user_phone = db.Column(db.Integer, nullable=False, unique=True) # updated attributes
+    user_email = db.Column(db.String(120), nullable=False)
+    user_phone = db.Column(db.Integer, nullable=False) # updated attributes
     user_dob = db.Column(db.Date, nullable=True) # updated attributes
     user_bio = db.Column(db.Text, nullable=True) # updated attributes
     
