@@ -8,7 +8,7 @@ import sqlalchemy as sa
 @flaskApp.route('/')
 @flaskApp.route('/home')
 def home_func():
-  return render_template('map-display.html')
+ return render_template('map-display.html')
 
 @flaskApp.route('/login')
 def login_func():
