@@ -5,6 +5,15 @@ from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 import sqlalchemy as sa
 
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+@app.route('/map-display')
+def map_display():
+    return render_template('map-display.html')
+
 @flaskApp.route('/')
 @flaskApp.route('/home')
 def home_func():
