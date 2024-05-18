@@ -5,13 +5,30 @@ from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 import sqlalchemy as sa
 
+from flask import render_template, redirect, request, flash, jsonify
+from flask_login import login_user, login_required, current_user
+
+from app import flaskApp, models, db
+from .models import User, Station, Post
+
 @flaskApp.route('/')
 @flaskApp.route('/home')
 def home_func():
     return render_template('map-display.html')
 
-@flaskApp.route('/login')
+@flaskApp.route('/login', methods=['GET', 'POST'])
 def login_func():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        user = User.query.filter_by(user_name=username).first()
+        if user and user.user_password == password:  # Basic password check (insecure!)
+            login_user(user)  # Log in the user with Flask-Login
+            return redirect(url_for('profile_func'))  # Redirect to profile
+        else:
+            flash('Invalid username or password')
+    
     return render_template('userLogin.html', is_submission_page=True)
 
 @flaskApp.route('/submission')
