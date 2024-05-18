@@ -17,10 +17,10 @@ $(document).ready(function(){
             "postcode": postcode,
             "waiting_time": waitTime
           }, 
-          success: function(response){
-            console.log(response)
-          }
-          
+          success: function(response) {
+            console.log("AJAX success response:", response);
+            window.location.href = "/home";
+          },
       })
     });
 

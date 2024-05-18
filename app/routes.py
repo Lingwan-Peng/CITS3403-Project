@@ -104,12 +104,13 @@ def map_input_func():
     address = data.get('address')
     postcode = data.get('postcode')
     phone = data.get('phone_num')
+    print(phone)
     new_station = Station(station_name = name, station_postcode = postcode, station_phone_number = phone, station_address = address)
     db.session.add(new_station)
     print(new_station)
     db.session.commit()
     print("Received data:", data)
-    return jsonify({"message": "Data received successfully"})
+    return jsonify({"message": "Station added successfully"}), 200
 
 # New route to fetch user's rank
 @flaskApp.route('/leaderboard/user', methods=['GET'])
@@ -117,6 +118,11 @@ def get_user_rank():
     # Placeholder logic to fetch user's rank from the database
     user_rank = {'rank': 5}  # Placeholder for actual user rank
     return jsonify(user_rank)
+
+@flaskApp.route('/test-redirect')
+def test_redirect():
+    return redirect('/home')
+
 
 
 '''
