@@ -5,6 +5,8 @@ from sqlalchemy import ForeignKey
 import sqlalchemy.orm as so
 from sqlalchemy.orm import relationship
 from app import db, flaskApp
+from flask_login import UserMixin  
+from app import db
 
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +14,23 @@ class User(db.Model):
     user_password = db.Column(db.String(20), nullable=False)
     user_email = db.Column(db.String(120), nullable=False, unique=True)
     posts = db.relationship('Post', back_populates='post_author')
+    user_phone = db.Column(db.String(20))
+    user_dob = db.Column(db.Date)
+    user_bio = db.Column(db.String(255))
+
+    # Flask-Login required methods
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.user_id) 
+
 
 class Station(db.Model):
     station_id = db.Column(db.Integer, primary_key=True)
