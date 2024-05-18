@@ -18,6 +18,8 @@
         <div class="lboard_wrap">
             <div class="lboard_item">
                 <!-- Placeholder for leaderboard data -->
+                <!-- Add the image below -->
+                <img src="https://cdn-icons-png.flaticon.com/512/3150/3150116.png" alt="Leaderboard Image" style="display: block; margin: 0 auto; width: 100px; height: 100px;">
             </div>
         </div>
     </div>
@@ -36,7 +38,8 @@
                 url: '/leaderboard/user',  // Updated URL to fetch user's rank
                 type: 'GET',
                 success: function(data) {
-                    $('.lboard_item').html('<p>User\'s Rank: ' + data.rank + '</p>');
+                    $('.lboard_item').html('<p>User\'s Rank: ' + data.rank + '</p>' +
+                                           '<img src="https://cdn-icons-png.flaticon.com/512/3150/3150116.png" alt="Leaderboard Image" style="display: block; margin: 0 auto; width: 100px; height: 100px;">');
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching leaderboard data:', error);
