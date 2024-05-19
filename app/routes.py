@@ -123,12 +123,6 @@ def test_redirect():
     return redirect('/home')
 
 
-# New route to fetch user's rank
-@flaskApp.route('/leaderboard/user', methods=['GET'])
-def get_user_rank():
-    # Placeholder logic to fetch user's rank from the database
-    user_rank = {'rank': 5}  # Placeholder for actual user rank
-    return jsonify(user_rank)
 
 
 
