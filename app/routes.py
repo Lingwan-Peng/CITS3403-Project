@@ -2,7 +2,7 @@ from os import path
 import csv
 from app import flaskApp, models, db
 from .models import User, Station, Post
-from flask import render_template, redirect, request, flash, jsonify
+from flask import render_template, redirect, request, flash, jsonify, url_for
 import sqlalchemy as sa
 import requests
 import json
@@ -15,6 +15,48 @@ def home_func():
 @flaskApp.route('/login')
 def login_func():
     return render_template('userLogin.html', is_submission_page=True)
+
+@flaskApp.route('/check_login', methods=['POST'])
+def check_login():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+
+    user = User.query.filter_by(user_name=username).first()
+    if user and user.check_password(password):
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False}), 401
+    
+@flaskApp.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        confirmed_password = request.form['confirm_password']
+        
+        existing_user = User.query.filter_by(user_name=username).first()
+        existing_email = User.query.filter_by(user_email=email).first()
+        if existing_user or existing_email:
+            return jsonify({'success': False, 'new_user': False})
+
+        if password != confirmed_password:
+            return jsonify({'success': False, 'new_user': False, 'password_match': False})
+        
+        hashed_password = hash(password)
+        new_user = User(
+            user_name=username,
+            user_password=hashed_password,
+            user_email=email,
+        )
+        
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'success': True})
+    return render_template('register.html')
+
+
 
 @flaskApp.route('/submission')
 def submission_func():

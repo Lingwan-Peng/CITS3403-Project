@@ -4,6 +4,7 @@ import sqlalchemy as sa
 from sqlalchemy import ForeignKey
 import sqlalchemy.orm as so
 from sqlalchemy.orm import relationship
+from werkzeug.security import check_password_hash
 from app import db, flaskApp
 
 class User(db.Model):
@@ -14,8 +15,11 @@ class User(db.Model):
     user_phone = db.Column(db.Integer, nullable=False) # updated attributes
     user_dob = db.Column(db.Date, nullable=True) # updated attributes
     user_bio = db.Column(db.Text, nullable=True) # updated attributes
-    
     posts = db.relationship('Post', back_populates='post_author')
+
+    def check_password(self, password): 
+        hashed = hash(password)
+        return hash(password) == int(self.user_password)
 
 class Station(db.Model):
     station_id = db.Column(db.Integer, primary_key=True)

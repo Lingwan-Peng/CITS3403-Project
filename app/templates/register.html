@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>User Registration</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='userRegister.css') }}">
+<script src="{{ url_for('static', filename='userRegister.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+  <h2>User Registration</h2>
+  <form action="/register" method="post">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="submit" value="Register">
+  </form>
+  <a href="{{ url_for('home_func') }}"><p id="link_back">Back to Home Page</p></a>
+</div>
+{% endblock %}

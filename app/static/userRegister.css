@@ -1,0 +1,56 @@
+/* userRegisterCss.css */
+
+.container {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .logo {
+    display: block;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  #link_back {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #007bff;
+  }
+  
+  #link_back:hover {
+    text-decoration: underline;
+  }
+  
+  #error_message {
+    color: red;
+    margin-top: 10px;
+  }
+  
