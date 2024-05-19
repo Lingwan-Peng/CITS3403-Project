@@ -15,6 +15,9 @@ class User(db.Model):
     user_phone = db.Column(db.Integer, nullable=False) # updated attributes
     user_dob = db.Column(db.Date, nullable=True) # updated attributes
     user_bio = db.Column(db.Text, nullable=True) # updated attributes
+    user_phone = db.Column(db.Integer, nullable=False, unique=True)
+    user_dob = db.Column(db.Date, nullable=True) 
+    user_bio = db.Column(db.Text, nullable=True) 
     posts = db.relationship('Post', back_populates='post_author')
 
     def check_password(self, password): 
