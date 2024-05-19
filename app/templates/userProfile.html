@@ -11,47 +11,48 @@
 {% block body %}
 
 <!-- change links or content later for back-end part -->
-<div class="container-fluid pt-4 px-4">
-    <div class="row justify-content-md-center">
-        <div class="col-sm-12 col-xl-6">
-            <div id="mainContent" class="rounded h-100 p-4">
-                <h1>User Profile</h1>
-                <img id="userProfilePic" src="{{url_for('static', filename='images/profilePicture.PNG')}}"
-                    alt="User profile picture." class="profile-image">
+<div class="container">
+    <div class="container-fluid pt-4 px-4">
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-xl-6">
+                <div id="mainContent" class="rounded h-100 p-4">
+                    <h1 class="responsive-title">User Profile</h1>
+                    <img id="userProfilePic" src="{{url_for('static', filename='images/profilePicture.PNG')}}"
+                        alt="User profile picture." class="profile-image">
 
-                <div id="profile">
-                    <!-- users are able to modify these info -->
-                    <p>Name: <span id="Name">user name</span></p>
-                    <p>Email: <span id="Email">email address</span></p>
-                    <p>Phone: <span id="Phone">phone number</span></p>
-                    <p>DOB: <span id="DOB">date of birth</span></p>
-                    <p>Bio: <span id="Bio">user biography...</span></p>
-                    <button id="update" type="button" class="btn btn-danger" onclick="toggleEditMode()">Edit
-                        Profile</button>
-                </div>
-
-                <div id="editProfile" style="display: none;">
-                    <label for="newName">Name:</label>
-                    <input type="text" id="newName" class="form-control"><br>
-                    <label for="newEmail">Email:</label>
-                    <input type="email" id="newEmail" class="form-control"><br>
-                    <label for="newPhone">Phone:</label>
-                    <input type="tel" id="newPhone" class="form-control"><br>
-                    <label for="newDOB">DOB:</label>
-                    <input type="date" id="newDOB" class="form-control"><br>
-
-                    <div class="form-floating">
-                        <label for="newBio">Bio:</label>
-                        <textarea id="newBio" class="form-control"></textarea><br>
+                    <div id="profile">
+                        <!-- users are able to modify these info -->
+                        <p>Name: <span id="Name">user name</span></p>
+                        <p>Email: <span id="Email">email address</span></p>
+                        <p>Phone: <span id="Phone">phone number</span></p>
+                        <p>DOB: <span id="DOB">date of birth</span></p>
+                        <p>Bio: <span id="Bio">user biography...</span></p>
+                        <button id="update" type="button" class="btn btn-success">Edit Profile</button>
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="saveProfile()">Save Changes</button>
-                </div>
 
-                <div id="systInfo">
-                    <!-- info that should be updated by system -->
-                    <p>Number of Posts: <span id="NumPosts">total number of posts: xx</span></p>
-                    <p>Recent posts: <span id="RecentPosts">~10 most recent posts or modification</span></p>
-                    <p>Favorites: <span id="Favs">favorite stations?</span></p>
+                    <div id="editProfile" style="display: none;">
+                        <label for="newName">Name:</label>
+                        <input type="text" id="newName" class="form-control"><br>
+                        <label for="newEmail">Email:</label>
+                        <input type="email" id="newEmail" class="form-control"><br>
+                        <label for="newPhone">Phone:</label>
+                        <input type="tel" id="newPhone" class="form-control"><br>
+                        <label for="newDOB">DOB:</label>
+                        <input type="date" id="newDOB" class="form-control"><br>
+
+                        <div class="form-floating">
+                            <label for="newBio">Bio:</label>
+                            <textarea id="newBio" class="form-control"></textarea><br>
+                        </div>
+                        <button id="save" class="btn btn-success">Save Changes</button>
+                    </div>
+
+                    <div id="systInfo">
+                        <!-- info that should be updated by system -->
+                        <p>Number of Posts: <span id="NumPosts">total number of posts: xx</span></p>
+                        <p>Recent posts: <span id="RecentPosts">~10 most recent posts or modification</span></p>
+                        <p>Favorites: <span id="Favs">favorite stations?</span></p>
+                    </div>
                 </div>
             </div>
         </div>
