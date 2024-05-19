@@ -20,9 +20,8 @@ def submission_func():
 
 @flaskApp.route('/leaderboard')
 def leaderboard_func():
-    # Fetch users sorted by interaction score in descending order
-    users = User.query.order_by(User.interaction_score.desc()).all()
-    return render_template('leaderboard.html', users=users)
+    return render_template('leaderboard.html')
+
 
 @flaskApp.route('/userProfile', methods=['GET', 'POST'])
 # @login_required
@@ -88,20 +87,15 @@ def map_input_func():
 # New route to fetch user's rank
 @flaskApp.route('/leaderboard/user', methods=['GET'])
 def get_user_rank():
-    user_id = request.args.get('user_id')
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
+    # Placeholder logic to fetch user's rank from the database
+    user_rank = {'rank': 5}  # Placeholder for actual user rank
+    return jsonify(user_rank)
 
-    # Calculate rank based on interaction_score
-    users = User.query.order_by(User.interaction_score.desc()).all()
-    rank = next((index + 1 for index, u in enumerate(users) if u.user_id == user_id), None)
 
-    return jsonify({'rank': rank, 'interaction_score': user.interaction_score})
 
-# Placeholder route to handle user submissions (uncomment when needed)
 '''
+: WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
 @flaskApp.route('/submit', methods=["POST"])
 def submit():
-    return render_template('listGroup.html')
+  return render_template('listGroup.html')
 '''
