@@ -24,7 +24,8 @@ def leaderboard_func():
     return render_template('leaderboard.html')
 
 
-@flaskApp.route('/userProfile', methods = ['GET', 'POST'])
+
+@flaskApp.route('/userProfile', methods=['GET', 'POST'])
 # @login_required
 def profile_func():
     if request.method == 'POST':
@@ -37,7 +38,6 @@ def profile_func():
         phone = data.get('newPhone')
         dob = data.get('newDOB')
         bio = data.get('newBio')
-
         # update db
         user = User.query.filter_by(user_name=oldName).first()
         if user:
@@ -54,7 +54,7 @@ def profile_func():
     else:
         return render_template('userProfile.html')
 
-@flaskApp.route('/trial', methods = ["POST"])
+@flaskApp.route('/trial', methods=["POST"])
 def trial_func():
     input_data = request.form
     user_query = input_data.get('place')
@@ -97,15 +97,14 @@ def trial_func():
     print(returned_row)
     return jsonify({"text": returned_row})
 
-@flaskApp.route('/map-submit', methods = ["POST"])
+@flaskApp.route('/map-submit', methods=["POST"])
 def map_input_func():
     data = request.form
     name = data.get('station_name')
     address = data.get('address')
     postcode = data.get('postcode')
     phone = data.get('phone_num')
-    print(phone)
-    new_station = Station(station_name = name, station_postcode = postcode, station_phone_number = phone, station_address = address)
+    new_station = Station(station_name=name, station_postcode=postcode, station_phone_number=phone, station_address=address)
     db.session.add(new_station)
     print(new_station)
     db.session.commit()
@@ -124,15 +123,19 @@ def test_redirect():
     return redirect('/home')
 
 
+# New route to fetch user's rank
+@flaskApp.route('/leaderboard/user', methods=['GET'])
+def get_user_rank():
+    # Placeholder logic to fetch user's rank from the database
+    user_rank = {'rank': 5}  # Placeholder for actual user rank
+    return jsonify(user_rank)
+
+
 
 '''
 : WHEN USER AND SUBMISSION PAGES ARE CONNECTED TO DATABASES
 @flaskApp.route('/submit', methods=["POST"])
 def submit():
-    return render_template('listGroup.html')
+  return render_template('listGroup.html')
 '''
-
-
-
-
 
