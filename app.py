@@ -1,8 +1,6 @@
-from app import flaskApp, db, create_app
+from app import flaskApp, db
 from flask_sqlalchemy import SQLAlchemy
 from app import routes
-
-from config import DeploymentConfig
 
 import sqlalchemy as sa
 import sqlalchemy.orm as so
