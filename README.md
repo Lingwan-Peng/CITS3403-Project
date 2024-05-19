@@ -51,4 +51,7 @@ General style inspiration: <https://themewagon.com/themes/free-bootstrap-5-admin
 
 General set up of server and architecture: <https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world>
 
+An example template where Bootstrap, JS, CSS and HTML have been used to create a map with multiple locations 
+<https://bootsnipp.com/snippets/xr9r9/>
+
 Helpful documentation and tutorial: <https://www.w3schools.com>

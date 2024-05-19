@@ -9,8 +9,12 @@ from app import db, flaskApp
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(120), nullable=False)
-    user_password = db.Column(db.String(20), nullable=False)
+    user_password_hash = db.Column(db.String(256), nullable=False)
     user_email = db.Column(db.String(120), nullable=False, unique=True)
+    user_phone = db.Column(db.Integer, nullable=False) # updated attributes
+    user_dob = db.Column(db.Date, nullable=True) # updated attributes
+    user_bio = db.Column(db.Text, nullable=True) # updated attributes
+    
     posts = db.relationship('Post', back_populates='post_author')
 
 class Station(db.Model):
@@ -28,8 +32,8 @@ class Post(db.Model):
     post_title = db.Column(db.String(255), nullable=False)
     post_content = db.Column(db.Text, nullable=False)
     post_author_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-    post_author = relationship('User', back_populates ='posts')
+    post_author = relationship('User', back_populates='posts')
 
-# creates the database tables -> only needs to be run once
+# Creates the database tables -> only needs to be run once
 with flaskApp.app_context():
     db.create_all()
