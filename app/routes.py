@@ -5,6 +5,7 @@ from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 import sqlalchemy as sa
 import requests
+import json
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
@@ -97,19 +98,31 @@ def trial_func():
     print(returned_row)
     return jsonify({"text": returned_row})
 
-@flaskApp.route('/map-submit', methods=["POST"])
+@flaskApp.route('/map-submit', methods = ["POST"])
 def map_input_func():
     data = request.form
     name = data.get('station_name')
     address = data.get('address')
     postcode = data.get('postcode')
     phone = data.get('phone_num')
-    new_station = Station(station_name=name, station_postcode=postcode, station_phone_number=phone, station_address=address)
+    checked = data.get('checked')
+    checked_dict = json.loads(checked)
+
+    fuel_types_lst = []
+    
+    for key, value in checked_dict.items():
+        input = f"{key}:{value}"
+        fuel_types_lst.append(input)
+    
+    fuel_types_str = str(fuel_types_lst)
+    
+    new_station = Station(station_name = name, station_postcode = postcode, station_phone_number = phone, station_address = address, station_fuel_prices = fuel_types_str)
     db.session.add(new_station)
     print(new_station)
     db.session.commit()
     print("Received data:", data)
     return jsonify({"message": "Station added successfully"}), 200
+
 
 # New route to fetch user's rank
 @flaskApp.route('/leaderboard/user', methods=['GET'])

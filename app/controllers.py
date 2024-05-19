@@ -13,4 +13,4 @@ def internal_error(error):
 class GroupCreationError(Exception):
     pass
 
-if user is None:
+# if user is None:

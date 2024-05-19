@@ -22,6 +22,9 @@
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.478);
   }
+  .fuel_price_container{
+    display: none;
+  }
 </style>
 {% endblock %}
 
@@ -49,20 +52,47 @@
     <div class="row">
       <div class = "col-md-6">
         <label id = "label_fuel">Fuel Types</label>
-        <form action="/action_page.php">
-          <input type="checkbox" id="standard_unleaded" id="standard_unleaded" value="standard_unleaded">
+        <form id="fuel_types_checkboxes">
+          <input type="checkbox" id="standard_unleaded" value="standard_unleaded">
           <label for="standard_unleaded"> Standard unleaded petrol (91)</label><br>
-          <input type="checkbox" id="premium_95_octane" id="premium_95_octane" value="premium_95_octane">
+          <span id="standard_unleaded_price_container" class="fuel_price_container">
+            <input type="text" id="standard_unleaded_price" class="fuel_price"> per litre
+          </span><br>
+        
+          <input type="checkbox" id="premium_95_octane" value="premium_95_octane">
           <label for="premium_95_octane"> Premium 95-octane unleaded</label><br>
-          <input type="checkbox" id="premium_98_octane" id="premium_98_octane" value="premium_98_octane">
+          <span id="premium_95_octane_price_container" class="fuel_price_container">
+            <input type="text" id="premium_95_octane_price" class="fuel_price"> per litre
+          </span><br>
+        
+          <input type="checkbox" id="premium_98_octane" value="premium_98_octane">
           <label for="premium_98_octane"> Premium 98-octane unleaded</label><br>
-          <input type="checkbox" id="e10" id="e10" value="e10">
+          <span id="premium_98_octane_price_container" class="fuel_price_container">
+            <input type="text" id="premium_98_octane_price" class="fuel_price"> per litre
+          </span><br>
+        
+          <input type="checkbox" id="e10" value="e10">
           <label for="e10"> E10 - 94-octane</label><br>
-          <input type="checkbox" id="e85" id="e85" value="e85">
+          <span id="e10_price_container" class="fuel_price_container">
+            <input type="text" id="e10_price" class="fuel_price"> per litre
+          </span><br>
+        
+          <input type="checkbox" id="e85" value="e85">
           <label for="e85"> E85 - flex-fuel</label><br>
-          <input type="checkbox" id="diesel" id="diesel" value="diesel">
-          <label for="diesel"> Diesel</label><br><br>
-        </form>          
+          <span id="e85_price_container" class="fuel_price_container">
+            <input type="text" id="e85_price" class="fuel_price"> per litre
+          </span><br>
+        
+        
+          <input type="checkbox" id="diesel" value="diesel">
+          <label for="diesel"> Diesel</label><br>
+          <span id="diesel_price_container" class="fuel_price_container">
+            <input type="text" id="diesel_price" class="fuel_price"> per litre
+          </span><br><br>
+        </form>
+        
+        
+                
       </div>
       <div class = "col-md-6">
         <label for="wait_time">Waiting Time:</label>
