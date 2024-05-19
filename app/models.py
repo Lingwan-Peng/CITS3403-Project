@@ -11,11 +11,11 @@ class User(db.Model):
     user_name = db.Column(db.String(120), nullable=False)
     user_password_hash = db.Column(db.String(256), nullable=False)
     user_email = db.Column(db.String(120), nullable=False, unique=True)
-    user_phone = db.Column(db.Integer, nullable=False) # updated attributes
-    user_dob = db.Column(db.Date, nullable=True) # updated attributes
-    user_bio = db.Column(db.Text, nullable=True) # updated attributes
-    interaction_score = db.Column(db.Integer, default=0) # new column for interaction score
-    
+    user_phone = db.Column(db.Integer, nullable=False)  # updated attributes
+    user_dob = db.Column(db.Date, nullable=True)  # updated attributes
+    user_bio = db.Column(db.Text, nullable=True)  # updated attributes
+    interaction_score = db.Column(db.Integer, default=0)  # new attribute
+
     posts = db.relationship('Post', back_populates='post_author')
 
 class Station(db.Model):
@@ -24,7 +24,7 @@ class Station(db.Model):
     station_postcode = db.Column(db.Integer)
     station_phone_number = db.Column(db.String(20))
     station_address = db.Column(db.String(255))
-    
+
     def __repr__(self):
         return f"<GasStation {self.station_name}, address {self.station_address}>\n"
 
@@ -39,5 +39,3 @@ class Post(db.Model):
 # Creates the database tables -> only needs to be run once
 with flaskApp.app_context():
     db.create_all()
-
-
