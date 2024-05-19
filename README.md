@@ -41,7 +41,9 @@ When you have all the packages install and ready to run, use the command line `f
 
 ## How to run application tests
 
-Unit tests to be implemented.
+Unit tests to be implemented. Once completed the set of tests can then be run from the command line using:
+
+`python -m unittest <filename>`
 
 ## Refrences
 
