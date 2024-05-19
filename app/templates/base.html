@@ -7,22 +7,26 @@
     <link rel="stylesheet" href="{{url_for('static', filename='navbar.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
-
     </style>
     {% block head %}{% endblock %}
 </head>
 <body style="margin-top: 150px;">
-    <!-- Buttons for larger screens -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <img src="{{url_for('static', filename='images/Untitled.jpg')}}" alt="Logo"> <!-- Add an image tag inside the navbar -->
-        <ul class = buttons>
+        <!-- Logo -->
+        <img src="{{url_for('static', filename='images/Untitled.jpg')}}" alt="Logo">
+        
+        <!-- Buttons for larger screens -->
+        <ul class="buttons">
             <li><a href="{{url_for('home_func')}}">Home</a></li>
             <li><a href="{{url_for('leaderboard_func')}}">Leaderboard</a></li>
             <li><a href="{{url_for('profile_func')}}">Your Profile</a></li>
             <li><a href="{{url_for('login_func')}}">Login</a></li>
         </ul>
+
+        <!-- Dropdown for smaller screens -->
         <div class="dropdown" id="dropdown">
-            <button id = "button_dropdown" onclick="toggleDropdown()">Menu</button>
+            <button id="button_dropdown" onclick="toggleDropdown()">Menu</button>
             <div class="dropdown-content" id="dropdownContent">
                 <a href="{{url_for('home_func')}}">Home</a>
                 <a href="{{url_for('leaderboard_func')}}">Leaderboard</a>
@@ -32,10 +36,12 @@
         </div>
     </nav>
 
-
+    <!-- Body content -->
     {% block body %}
-    <!-- Navigation Links -->
+    <!-- Main content -->
     {% endblock %}
+
+    <!-- Script for toggling dropdown menu -->
     <script src="{{url_for('static', filename='toggle_dropdown.js')}}"></script>
 </body>
 </html>
