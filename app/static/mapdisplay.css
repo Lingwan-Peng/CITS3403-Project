@@ -12,7 +12,7 @@ body {
     display: flex;
     margin-bottom: 10px;
     justify-content: center;
-    font-size: 30px;
+    font-size: 30px; 
 }
 #map-placeholder{
     width: 100%;
@@ -44,7 +44,6 @@ body {
     margin-left: 10px;
 }
 #submission-button{
-    position: flex;
     justify-content: center;
 }
 
