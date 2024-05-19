@@ -23,8 +23,10 @@ class Station(db.Model):
     station_postcode = db.Column(db.Integer)
     station_phone_number = db.Column(db.String(20))
     station_address = db.Column(db.String(255))
+    station_fuel_prices = db.Column(db.String(300))
     def __repr__(self):
         return f"<GasStation {self.station_name}, address {self.station_address}>\n"
+    
 
 class Post(db.Model):
     post_id = db.Column(db.Integer, primary_key=True)
