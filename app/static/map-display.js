@@ -50,6 +50,7 @@ function makeAjaxCall(inputValue, filter) {
                 var inner_tooltip_div = $('<div></div>').addClass('innerClass');
                 var phone_para = $('<span></span>').text(`Phone Number: ${data.text[i][2]}`);
                 var opening_hour_para = $('<span></span>').text(`Address: ${data.text[i][3]}`);
+                var price_lists = $('<span></span>').text.text(`Prices: ${data.text[i][4]}`);
                 inner_tooltip_div.append(phone_para, '<br>', opening_hour_para, '<br');
                 tooltip.append(inner_tooltip_div);
                 newDiv.append(tooltip)

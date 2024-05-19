@@ -1,22 +1,24 @@
 
 body {
     margin: 0;
+    padding: 20px;
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #fafbfc;
-    background-color: #000;
+    color: #000000;
+    background-color: #ffffff;
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.478);
 }
 
 #mainContent{
-    background-color: rgb(39, 39, 39);
+    background-color: rgb(255, 255, 255);
 }
 
 /* Adjust the image size for different screen sizes */
-@media (min-width: 576px) {
+@media (min-width: 76px) {
     .profile-image {
         width: 30%;
         max-width: 250px;
