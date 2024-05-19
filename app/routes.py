@@ -4,6 +4,7 @@ from app import flaskApp, models, db
 from .models import User, Station, Post
 from flask import render_template, redirect, request, flash, jsonify
 import sqlalchemy as sa
+import requests
 
 @flaskApp.route('/')
 @flaskApp.route('/home')
@@ -23,6 +24,7 @@ def leaderboard_func():
     return render_template('leaderboard.html')
 
 
+
 @flaskApp.route('/userProfile', methods=['GET', 'POST'])
 # @login_required
 def profile_func():
@@ -36,7 +38,6 @@ def profile_func():
         phone = data.get('newPhone')
         dob = data.get('newDOB')
         bio = data.get('newBio')
-
         # update db
         user = User.query.filter_by(user_name=oldName).first()
         if user:
@@ -56,14 +57,40 @@ def profile_func():
 @flaskApp.route('/trial', methods=["POST"])
 def trial_func():
     input_data = request.form
-    street = input_data.get('place')
-    print(street)
+    user_query = input_data.get('place')
+    filter = input_data.get('filter')
+    print(filter, "is the filter")
+    print(user_query)
     all_stations = Station.query.all()
     returned_row = []
     count = 0
+    postcode_str = ''
     for s in all_stations:
-        name = str(s.station_name.lower())
-        if street.lower() in name:
+        if filter == 'station_name':
+            output = str(s.station_name.lower())
+        elif filter == 'address':
+            output = str(s.station_address.lower())
+        elif filter == 'postcode':
+            output = str(s.station_postcode)
+        elif filter == 'nearby':
+            lat_long = user_query.split(":")
+            url = f"https://api.geoapify.com/v1/geocode/reverse?lat={lat_long[0]}&lon={lat_long[1]}&format=json&apiKey=0802eaef0fa64329b223e13fdf6719d6"
+            response = requests.get(url)
+            data_dict = response.json()
+            postcode_dict = data_dict['results']
+            for item in postcode_dict:
+                inner = dict(item)
+                postcode_str = inner['postcode']
+            output = str(s.station_postcode)
+        if postcode_str != '':
+            print(postcode_str, "is the postcode")
+            if postcode_str in output:
+                print(postcode_str, "is in the thingy")
+                inner_row = [s.station_name, s.station_address, s.station_phone_number, s.station_postcode]
+                returned_row.append(inner_row)
+                count += 1
+        elif user_query.lower() in output:
+            print(user_query)
             inner_row = [s.station_name, s.station_address, s.station_phone_number, s.station_postcode]
             returned_row.append(inner_row)
             count += 1
@@ -82,7 +109,19 @@ def map_input_func():
     print(new_station)
     db.session.commit()
     print("Received data:", data)
-    return jsonify({"message": "Data received successfully"})
+    return jsonify({"message": "Station added successfully"}), 200
+
+# New route to fetch user's rank
+@flaskApp.route('/leaderboard/user', methods=['GET'])
+def get_user_rank():
+    # Placeholder logic to fetch user's rank from the database
+    user_rank = {'rank': 5}  # Placeholder for actual user rank
+    return jsonify(user_rank)
+
+@flaskApp.route('/test-redirect')
+def test_redirect():
+    return redirect('/home')
+
 
 # New route to fetch user's rank
 @flaskApp.route('/leaderboard/user', methods=['GET'])
@@ -99,3 +138,4 @@ def get_user_rank():
 def submit():
   return render_template('listGroup.html')
 '''
+

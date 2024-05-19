@@ -97,6 +97,12 @@ font-size: 13px;
     background-color: grey;
     border: grey;
 }
+
+
+#filter-options{
+    margin-bottom: 10px;
+}
+
 .listing{
     position: relative;
     border: black solid 1px;

@@ -13,12 +13,20 @@ h1 {
     align-items: center; /* Align items vertically in the navbar */
     z-index: 1000;
 }
-.navbar ul {
+.navbar ul{
     display: flex;
     justify-content: flex-end;
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+#button_dropdown{
+    background-color: rgba(255, 0, 0, 0);
+    border-style: none;
+    color: white;
+    padding: 15px;
+    display: block;
+    text-align: center;
 }
 .navbar a {
     color: white;
@@ -33,4 +41,42 @@ h1 {
 .navbar img {
     height: 100%;
     margin-right: 20px; 
+}
+.dropdown {
+    display: none;
+    position: relative;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0px;
+    background-color: rgb(164, 164, 164);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: rgb(83, 83, 83);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .navbar ul  {
+        display: none;
+    }
+    .navbar img {
+        height: 80%;
+        width: 150px;
+        object-fit: cover;
+        margin-right: 20px; 
+    }
+    .dropdown {
+        display: block;
+    }
 }
