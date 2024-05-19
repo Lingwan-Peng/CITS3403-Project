@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from app import routes
 
 # add a secure key in every form it generates (code from lecture)
-# flaskApp.config['SECRET_KEY'] = 'you-will-never-guess'
+flaskApp.config['SECRET_KEY'] = 'you-will-never-guess'
 # add more variables here if needed
 
 
