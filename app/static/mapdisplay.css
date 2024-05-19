@@ -95,7 +95,7 @@ font-size: 13px;
 
 #back_button{
     background-color: grey;
-    border: grey;
+    border-style: none;
 }
 
 
