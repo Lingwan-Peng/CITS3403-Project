@@ -117,7 +117,7 @@ def trial_func():
             output = str(s.station_postcode)
         elif filter == 'nearby':
             lat_long = user_query.split(":")
-            url = f"https://api.geoapify.com/v1/geocode/reverse?lat={lat_long[0]}&lon={lat_long[1]}&format=json&apiKey=0802eaef0fa64329b223e13fdf6719d6"
+            url = f"https://api.geoapify.com/v1/geocode/reverse?lat={lat_long[0]}&lon={lat_long[1]}&format=json&apiKey="
             response = requests.get(url)
             data_dict = response.json()
             postcode_dict = data_dict['results']
